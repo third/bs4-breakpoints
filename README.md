@@ -3,3 +3,6 @@ Displays the BootStrap 4 breakpoint your device is currently using
 
 ## Demo
 http://third.github.io/bs4-breakpoints/
+
+## Screenshot
+![Alt text](/../gh-pages/public/images/screenshot-md-screen.png?raw=true "Medium Screen")
