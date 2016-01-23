@@ -5,4 +5,4 @@ Displays the BootStrap 4 breakpoint your device is currently using
 http://third.github.io/bs4-breakpoints/
 
 ## Screenshot
-![Medium Screen](./public/images/screenshot-md-screen.png?raw=true "Medium Screen")
+![Medium Screen](../../public/images/screenshot-md-screen.png?raw=true "Medium Screen")
