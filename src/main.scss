@@ -1,0 +1,105 @@
+body {
+   background: #333 url('./images/congruent_outline.png');
+}
+
+.dummy {
+    background-image: url('./images/screenshot-md-screen.png');
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #f5f5f5;
+}
+
+.centered-box {
+  flex: none;
+  width: 90vw;
+  * {
+    position: relative;
+    visibility: hidden;
+    text-align: center;
+    &:after {
+      visibility: visible;
+      display: block;
+      position: absolute;
+      padding: 5px;
+      top: 2px;
+      width: 100%;
+    }
+  }
+}
+
+.breakpoint-name {
+  margin-bottom: 1rem;
+  font-size: 8vw;
+}
+
+.breakpoint-size, .screen-orientation {
+  margin-bottom: .5rem;
+  font-size: 4vw;
+}
+
+.breakpoint-name:after {
+  content: 'Extra Small Screen (xs)';
+}
+
+.breakpoint-size:after {
+  content: 'Phones (>=0px to <=543px)';
+}
+
+/*small*/
+@media (min-width: 544px) {
+  .breakpoint-name:after {
+    content: 'Small Screen (sm)';
+  }
+  .breakpoint-size:after {
+    content: 'Phones (>=544px to <=767px)';
+  }
+}
+
+/*medium*/
+@media (min-width: 768px) {
+  .breakpoint-name:after {
+    content: 'Medium Screen (md)';
+  }
+  .breakpoint-size:after {
+    content: 'Tablets/Phablets (>=768px to <=991px)';
+  }
+}
+
+/*large*/
+@media (min-width: 992px) {
+  .breakpoint-name:after {
+    content: 'Large Screen (lg)';
+  }
+  .breakpoint-size:after {
+    content: 'Desktops (>=992px to <=1199px)';
+  }
+}
+
+/*extra large*/
+@media (min-width: 1200px) {
+  .breakpoint-name:after {
+    content: 'Extra Large Screen (xl)';
+  }
+  .breakpoint-size:after {
+    content: 'Desktops (>=1200px)';
+  }
+}
+
+@media (orientation: landscape) {
+  .screen-orientation:after {
+    content: "Orientation: Landscape";
+  }
+}
+
+@media (orientation: portrait) {
+  .screen-orientation:after {
+    content: "Orientation: Portrait";
+  }
+}

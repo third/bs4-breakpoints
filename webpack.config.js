@@ -1,16 +1,30 @@
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
 var minimize = process.argv.indexOf('--minimize') > -1;
 var minFile = minimize ? '.min' : '';
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var plugins = [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('main.css', {
+        allChunks: true
+    })
 ];
+var postCssPlugins = [autoprefixer];
+var sourceMap = 'source-map';
 
-minimize && plugins.push(new webpack.optimize.UglifyJsPlugin());
+if(minimize) {
+    plugins.push(new webpack.optimize.UglifyJsPlugin());
+    postCssPlugins.unshift(cssnano);
+    
+    //don't generate source map when generating minified files
+    sourceMap = '';
+}
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: sourceMap,
   entry: {
     main: [
       //'webpack-dev-server/client?http://localhost:8080',
@@ -37,8 +51,12 @@ module.exports = {
       {
         test: /\.scss$/,
         include: path.join(__dirname, 'src'),
-        loader: 'style!css!sass'
-      }
+        loader: ExtractTextPlugin.extract('css!postcss!sass')
+      },
+      { test: /\.(png|jpg)$/, loader: 'file-loader?name=images/[name].[ext]' }
     ]
+  },
+  postcss: function () {
+      return postCssPlugins;
   }
 }
