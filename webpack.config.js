@@ -35,7 +35,7 @@ module.exports = {
   output: {
     filename: '[name]' + minFile + '.js',
     path: path.join(__dirname, 'public'),
-    publicPath: '/public/'
+    publicPath: ''
   },
   plugins: plugins,
   module: {
@@ -53,7 +53,10 @@ module.exports = {
         include: path.join(__dirname, 'src'),
         loader: ExtractTextPlugin.extract('css!postcss!sass')
       },
-      { test: /\.(png|jpg)$/, loader: 'file-loader?name=images/[name].[ext]' }
+      { 
+          test: /\.(png|jpg)$/, 
+          include: path.join(__dirname, 'src'),
+          loader: 'file-loader?name=./images/[name].[ext]' }
     ]
   },
   postcss: function () {
