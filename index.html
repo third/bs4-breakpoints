@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>BootStrap 4 Breakpoints</title>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" integrity="sha384-mMG3CP9nPLZ1JW4y6ikjxNX15A0nEt+JQkm/LL6QtYxyXdUV6HG530PFmcJw7cpU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/main.css" >
+    <title>BootStrap Breakpoints</title>
+    <link rel="stylesheet" href="./public/main.css">
 </head>
+
 <body>
-    <div id="container"></div>
-    <script src="./public/main.min.js"></script>
+    <div id="container">
+        <div class="centered-box">
+            <h1 class="breakpoint-name">* Device</h1>
+            <p class="breakpoint-size">* (*px)</p>
+            <p class="screen-orientation">Orientation: *</p>
+            <p class="dimension" style="visibility: visible;"></p>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.dimension').innerHTML = `${window.innerWidth} x ${window.innerHeight}`;
+    </script>
 </body>
+
 </html>
